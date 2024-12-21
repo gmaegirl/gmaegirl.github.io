@@ -44,6 +44,21 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    document.getElementById("search").addEventListener("input", (e) => {
+    const query = e.target.value.toLowerCase();
+    const galleryItems = document.querySelectorAll(".gallery-item");
+
+    galleryItems.forEach(item => {
+        const itemTags = Array.from(item.querySelectorAll(".tag")).map(t => t.textContent.toLowerCase());
+        if (itemTags.some(tag => tag.includes(query))) {
+            item.style.display = "block"; // 검색 결과와 일치하면 표시
+        } else {
+            item.style.display = "none"; // 일치하지 않으면 숨기기
+        }
+    });
+});
+
+
     // 태그 필터링 기능
     function addTagFilter() {
         const galleryItems = document.querySelectorAll(".gallery-item");
