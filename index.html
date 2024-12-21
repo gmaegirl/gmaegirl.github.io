@@ -12,8 +12,13 @@
     </header>
     <div class="controls">
         <button id="show-all">전체 보기</button>
+        <input type="text" id="search" placeholder="태그 검색">
     </div>
-    <input type="text" id="search" placeholder="태그 검색">
+    <form id="upload-form">
+        <input type="text" id="upload-tags" placeholder="태그 입력 (쉼표로 구분)">
+        <input type="file" id="upload-image" accept="image/*">
+        <button type="submit">이미지 추가</button>
+    </form>
     <div class="gallery"></div>
     <script src="script.js"></script>
 </body>
