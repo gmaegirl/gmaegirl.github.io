@@ -36,6 +36,14 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("JSON 로드 오류:", error);
         });
 
+    // 전체 보기 버튼 기능
+    document.getElementById("show-all").addEventListener("click", () => {
+        const galleryItems = document.querySelectorAll(".gallery-item");
+        galleryItems.forEach(item => {
+            item.style.display = "block"; // 모든 이미지를 표시
+        });
+    });
+
     // 태그 필터링 기능
     function addTagFilter() {
         const galleryItems = document.querySelectorAll(".gallery-item");
