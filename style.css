@@ -1,6 +1,6 @@
 /* 기본 스타일 */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
@@ -67,7 +67,7 @@ button:hover {
     gap: 20px;
     padding: 20px;
     margin: 0 auto;
-    max-width: 1200px; /* 좌우 여백 */
+    max-width: 1200px;
 }
 
 .gallery-item {
@@ -77,35 +77,53 @@ button:hover {
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    text-align: center;
 }
 
 .gallery-item img {
     width: 100%;
     height: auto;
     display: block;
+    margin-bottom: 10px;
 }
 
-/* 오버레이 */
-.overlay {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
+/* 태그와 버튼 */
+.details {
     font-size: 14px;
-    padding: 10px;
+    color: black;
+    margin-top: 5px;
+    background: rgba(240, 240, 240, 1); /* 배경 통일 */
+    padding: 5px;
+    border-radius: 5px;
     display: flex;
-    flex-direction: column;
-    gap: 5px;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* 프롬프트 */
-.prompt {
+.details .tags {
+    text-align: left;
+    font-weight: bold;
+}
+
+.details .stats {
+    text-align: right;
+    font-weight: normal;
+}
+
+.copy-btn {
+    margin-top: 5px;
+    padding: 5px 10px;
     font-size: 12px;
+    background-color: #007bff;
     color: white;
-    padding: 5px;
-    background: rgba(0, 0, 0, 0.7);
+    border: none;
     border-radius: 5px;
+    cursor: pointer;
+}
+
+.copy-btn:hover {
+    background-color: #0056b3;
 }
 
 /* 즐겨찾기 아이콘 */
@@ -115,8 +133,8 @@ button:hover {
     right: 5px;
     font-size: 18px;
     cursor: pointer;
-    color: white;
-    background: rgba(0, 0, 0, 0.6);
+    color: gray;
+    background: rgba(0, 0, 0, 0.1);
     border-radius: 50%;
     padding: 5px;
     z-index: 10;
