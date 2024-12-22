@@ -54,16 +54,20 @@ document.addEventListener("DOMContentLoaded", () => {
         favorite.addEventListener("click", () => {
             favorite.classList.toggle("active");
             const currentFavorite = favorite.classList.contains("active") ? 1 : 0;
-            stats.textContent = `Copy: 0 Favorite: ${currentFavorite}`;
+            const currentCopy = parseInt(stats.textContent.match(/Copy: (\d+)/)[1]);
+            stats.textContent = `Copy: ${currentCopy} Favorite: ${currentFavorite}`;
         });
         galleryItem.appendChild(favorite);
 
         gallery.appendChild(galleryItem);
     }
 
-    // 카테고리 필터
+    // 카테고리 버튼 활성화
     categoryButtons.forEach(button => {
         button.addEventListener("click", () => {
+            categoryButtons.forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
+
             const category = button.dataset.category;
             const galleryItems = document.querySelectorAll(".gallery-item");
 
