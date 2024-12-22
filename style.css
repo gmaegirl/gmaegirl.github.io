@@ -148,4 +148,21 @@ button:hover {
     right: 5px;
     font-size: 20px;
     cursor: pointer;
-    color:
+    color: white;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.favorite.active {
+    color: gold;
+}
+
+/* 프롬프트 */
+.prompt {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+}
+
