@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("data.json")
         .then(response => response.json())
         .then(data => {
-            data.forEach(item => addGalleryItem(item.image, item.tags));
+            data.forEach(item => addGalleryItem(item.image, item.tags, item.category));
             addTagFilter();
         })
         .catch(error => console.error("JSON 로드 오류:", error));
@@ -18,6 +18,19 @@ document.addEventListener("DOMContentLoaded", () => {
         galleryItems.forEach(item => {
             const itemTags = Array.from(item.querySelectorAll(".tag")).map(t => t.textContent.toLowerCase());
             item.style.display = itemTags.some(tag => tag.includes(query)) ? "block" : "none";
+        });
+    });
+
+    // 카테고리 클릭 시 필터링
+    document.querySelectorAll(".category").forEach(categoryLink => {
+        categoryLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            const category = e.target.dataset.category;
+            const galleryItems = document.querySelectorAll(".gallery-item");
+            galleryItems.forEach(item => {
+                const itemCategory = item.dataset.category;
+                item.style.display = category === "main" || itemCategory === category ? "block" : "none";
+            });
         });
     });
 
@@ -44,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const reader = new FileReader();
             reader.onload = function(event) {
                 const imageUrl = event.target.result;
-                addGalleryItem(imageUrl, tags);
+                addGalleryItem(imageUrl, tags, "user-upload");
             };
             reader.readAsDataURL(file);
         });
@@ -54,9 +67,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // 갤러리 항목 추가 함수
-    function addGalleryItem(imageUrl, tags) {
+    function addGalleryItem(imageUrl, tags, category = "main") {
         const galleryItem = document.createElement("div");
         galleryItem.classList.add("gallery-item");
+        galleryItem.dataset.category = category;
 
         const img = document.createElement("img");
         img.src = imageUrl;
@@ -87,9 +101,4 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     }
-
-    // 상단 사이트명 클릭 시 메인홈 이동
-    document.getElementById("site-title").addEventListener("click", () => {
-        window.location.href = "index.html";
-    });
 });
