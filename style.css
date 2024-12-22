@@ -10,9 +10,9 @@ body {
 header {
     background-color: #333;
     color: white;
-    padding: 20px;
+    padding: 15px 20px; /* 간격 축소 */
     text-align: center;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -21,33 +21,38 @@ header {
 .categories {
     display: flex;
     justify-content: center;
-    padding: 20px;
-    gap: 15px;
+    padding: 10px; /* 간격 축소 */
+    gap: 10px;
     background-color: #f1f1f1;
     border-bottom: 2px solid #ccc;
 }
 
 .category-btn {
-    padding: 10px 20px;
+    padding: 8px 16px; /* 버튼 크기 축소 */
     font-size: 14px;
     border: none;
     border-radius: 20px;
-    background-color: #007bff;
-    color: white;
+    background-color: #e0e0e0; /* 기본 비활성화 색상 */
+    color: #333;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.category-btn.active,
+.category-btn.active {
+    background-color: #007bff;
+    color: white;
+}
+
 .category-btn:hover {
     background-color: #0056b3;
+    color: white;
     transform: scale(1.1);
 }
 
 /* 검색 바 */
 .controls {
     text-align: center;
-    margin: 20px;
+    margin: 15px 0; /* 간격 조정 */
 }
 
 .search-bar {
@@ -65,8 +70,9 @@ header {
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
-    margin: 20px;
-    padding: 20px;
+    margin: 20px auto; /* 간격 조정 */
+    padding: 10px;
+    max-width: 800px;
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -74,9 +80,10 @@ header {
 }
 
 .form-group {
-    flex: 1 1 200px;
+    flex: 1 1 300px;
     display: flex;
     flex-direction: column;
+    align-items: center; /* 중앙 정렬 */
 }
 
 .form-control {
@@ -106,7 +113,7 @@ header {
 /* 갤러리 */
 .gallery {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* PC: 한 줄에 4개 */
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     padding: 20px;
     margin: 0 auto;
@@ -177,18 +184,18 @@ header {
 /* 반응형 */
 @media (max-width: 1024px) {
     .gallery {
-        grid-template-columns: repeat(3, 1fr); /* 태블릿: 한 줄에 3개 */
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media (max-width: 768px) {
     .gallery {
-        grid-template-columns: repeat(2, 1fr); /* 작은 태블릿: 한 줄에 2개 */
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 480px) {
     .gallery {
-        grid-template-columns: repeat(1, 1fr); /* 모바일: 한 줄에 1개 */
+        grid-template-columns: repeat(1, 1fr);
     }
 }
