@@ -11,12 +11,13 @@ header {
     color: white;
     padding: 10px;
     text-align: center;
+    cursor: pointer;
 }
 
 /* 컨트롤 버튼과 검색창 */
 .controls {
     text-align: center;
-    margin: 10px 0;
+    margin: 10px 20px; /* 여백 추가 */
 }
 
 button, #search {
@@ -45,7 +46,7 @@ button:hover {
 /* 업로드 폼 스타일 */
 #upload-form {
     text-align: center;
-    margin: 10px 0;
+    margin: 10px 20px; /* 여백 추가 */
 }
 
 #upload-form input, #upload-form button {
@@ -70,12 +71,13 @@ button:hover {
 .gallery {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    padding: 10px;
+    gap: 20px; /* 여백 추가 */
+    padding: 20px; /* 여백 추가 */
+    justify-content: center;
 }
 
 .gallery-item {
-    width: calc(33.33% - 10px);
+    width: calc(33.33% - 20px);
     background: white;
     border: 1px solid #ccc;
     border-radius: 5px;
