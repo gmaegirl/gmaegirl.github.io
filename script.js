@@ -14,18 +14,25 @@ document.addEventListener("DOMContentLoaded", () => {
         const galleryItem = document.createElement("div");
         galleryItem.classList.add("gallery-item");
 
+        // 이미지 클릭 시 태그 복사
         const img = document.createElement("img");
         img.src = imageUrl;
+        img.addEventListener("click", () => {
+            navigator.clipboard.writeText(tags.join(", "))
+                .then(() => alert("Tag copied!"));
+        });
         galleryItem.appendChild(img);
 
         const details = document.createElement("div");
         details.classList.add("details");
 
+        // 태그 표시
         const tagDiv = document.createElement("div");
         tagDiv.classList.add("tags");
-        tagDiv.textContent = `Tag: ${tags.join(", ")}`;
+        tagDiv.textContent = tags.join(", ");
         details.appendChild(tagDiv);
 
+        // 집계 수
         const stats = document.createElement("div");
         stats.classList.add("stats");
         stats.textContent = `Copy: 0 Favorite: 0`;
@@ -33,28 +40,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         galleryItem.appendChild(details);
 
-        // 복사 버튼 추가
-        const copyButton = document.createElement("button");
-        copyButton.classList.add("copy-btn");
-        copyButton.textContent = "Copy Tag";
-        copyButton.addEventListener("click", () => {
-            navigator.clipboard.writeText(tags.join(", "))
-                .then(() => {
-                    alert("Tag copied!");
-                    const currentCopy = parseInt(stats.textContent.match(/Copy: (\d+)/)[1]);
-                    stats.textContent = `Copy: ${currentCopy + 1} Favorite: ${stats.textContent.match(/Favorite: (\d+)/)[1]}`;
-                });
-        });
-        galleryItem.appendChild(copyButton);
-
-        // 즐겨찾기 아이콘 추가
+        // 즐겨찾기 버튼 추가
         const favorite = document.createElement("div");
         favorite.classList.add("favorite");
         favorite.textContent = "★";
         favorite.addEventListener("click", () => {
             favorite.classList.toggle("active");
             const currentFavorite = favorite.classList.contains("active") ? 1 : 0;
-            stats.textContent = `Copy: ${stats.textContent.match(/Copy: (\d+)/)[1]} Favorite: ${currentFavorite}`;
+            stats.textContent = `Copy: 0 Favorite: ${currentFavorite}`;
         });
         galleryItem.appendChild(favorite);
 
