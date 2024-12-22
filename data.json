@@ -1,0 +1,32 @@
+[
+    {
+        "image": "images/001.png",
+        "tags": ["Nature", "Forest", "Tree"],
+        "category": "nature"
+    },
+    {
+        "image": "images/002.png",
+        "tags": ["Technology", "AI", "Digital"],
+        "category": "technology"
+    },
+    {
+        "image": "images/003.png",
+        "tags": ["Art", "Creative", "Design"],
+        "category": "art"
+    },
+    {
+        "image": "images/004.png",
+        "tags": ["Custom", "User", "Upload"],
+        "category": "custom"
+    },
+    {
+        "image": "images/005.png",
+        "tags": ["Custom", "User", "Upload"],
+        "category": "custom"
+    },
+    {
+        "image": "images/006.png",
+        "tags": ["Custom", "User", "Upload"],
+        "category": "custom"
+    }
+]
