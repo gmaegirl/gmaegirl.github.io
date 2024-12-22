@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const galleryItem = document.createElement("div");
         galleryItem.classList.add("gallery-item");
         galleryItem.dataset.category = category;
-
+    
         const img = document.createElement("img");
         img.src = imageUrl;
         galleryItem.appendChild(img);
@@ -75,12 +75,13 @@ document.addEventListener("DOMContentLoaded", () => {
         overlay.appendChild(favorite);
         galleryItem.appendChild(overlay);
 
-        // 프롬프트 추가
+        // 프롬프트 추가 시작
         const promptDiv = document.createElement("div");
         promptDiv.classList.add("prompt");
         promptDiv.textContent = `프롬프트: ${tags.join(", ")}`;
         galleryItem.appendChild(promptDiv);
-
+        // 프롬프트 추가 끝
+    
         gallery.appendChild(galleryItem);
         addTagFilter();
     }
