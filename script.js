@@ -14,12 +14,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const galleryItem = document.createElement("div");
         galleryItem.classList.add("gallery-item");
 
-        // 이미지 클릭 시 태그 복사
+        // 이미지 클릭 시 태그 복사 및 집계 업데이트
         const img = document.createElement("img");
         img.src = imageUrl;
         img.addEventListener("click", () => {
             navigator.clipboard.writeText(tags.join(", "))
-                .then(() => alert("Tag copied!"));
+                .then(() => {
+                    alert("Tag copied!");
+                    const currentCopy = parseInt(stats.textContent.match(/Copy: (\d+)/)[1]);
+                    const currentFavorite = parseInt(stats.textContent.match(/Favorite: (\d+)/)[1]);
+                    stats.textContent = `Copy: ${currentCopy + 1} Favorite: ${currentFavorite}`;
+                });
         });
         galleryItem.appendChild(img);
 
@@ -47,7 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
         favorite.addEventListener("click", () => {
             favorite.classList.toggle("active");
             const currentFavorite = favorite.classList.contains("active") ? 1 : 0;
-            stats.textContent = `Copy: 0 Favorite: ${currentFavorite}`;
+            const currentCopy = parseInt(stats.textContent.match(/Copy: (\d+)/)[1]);
+            stats.textContent = `Copy: ${currentCopy} Favorite: ${currentFavorite}`;
         });
         galleryItem.appendChild(favorite);
 
