@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tag Gallery with Categories</title>
+    <title>Tag Gallery</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,8 +20,26 @@
         <button class="category-btn" data-category="custom">Custom</button>
     </div>
 
-    <div class="controls">
+    <!-- 검색 및 업로드 섹션 -->
+    <div class="controls-upload-container">
         <input type="text" id="search" placeholder="Search Tags" class="search-bar">
+        <form id="upload-form">
+            <div class="form-group">
+                <input type="text" id="upload-tags" placeholder="Enter Tags (comma-separated)" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="file" id="upload-image" accept="image/*" multiple class="form-control">
+            </div>
+            <div class="form-group">
+                <select id="upload-category" class="form-control">
+                    <option value="nature">Nature</option>
+                    <option value="technology">Technology</option>
+                    <option value="art">Art</option>
+                    <option value="custom">Custom</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-submit">Add Images</button>
+        </form>
     </div>
 
     <!-- 업로드 폼 -->
@@ -43,7 +61,7 @@
         <button type="submit" class="btn-submit">Add Images</button>
     </form>
 
-    <div class="gallery"></div>
+   <div class="gallery"></div>
     <script src="script.js"></script>
 </body>
 </html>
