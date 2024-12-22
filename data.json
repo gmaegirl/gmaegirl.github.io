@@ -12,11 +12,11 @@
     {
         "image": "https://cdn.pixabay.com/photo/2017/02/13/01/26/the-question-mark-2061539_1280.png",
         "tags": ["Technology", "Digital", "Work"],
-        "category": "Nature"
+        "category": "nature"
     },
     {
         "image": "https://cdn.pixabay.com/photo/2017/02/13/01/26/the-question-mark-2061539_1280.png",
         "tags": ["Tree", "Nature", "Forest"],
-        "category": "Nature"
+        "category": "nature"
     }
 ]
