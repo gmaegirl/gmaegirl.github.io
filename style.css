@@ -158,11 +158,10 @@ button:hover {
     color: gold;
 }
 
-/* 프롬프트 */
+/* 프롬프트 스타일 */
 .prompt {
     margin-top: 5px;
     font-size: 14px;
     color: #555;
     text-align: center;
 }
-
