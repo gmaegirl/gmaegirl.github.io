@@ -14,9 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function addGalleryItem(imageUrl, tags, category = "custom") {
         const galleryItem = document.createElement("div");
         galleryItem.classList.add("gallery-item");
-        galleryItem.dataset.category = category; // 카테고리 데이터 추가
+        galleryItem.dataset.category = category;
 
-        // 이미지 클릭 시 태그 복사 및 집계 업데이트
         const img = document.createElement("img");
         img.src = imageUrl;
         img.addEventListener("click", () => {
@@ -33,13 +32,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const details = document.createElement("div");
         details.classList.add("details");
 
-        // 태그 표시
         const tagDiv = document.createElement("div");
         tagDiv.classList.add("tags");
         tagDiv.textContent = tags.join(", ");
         details.appendChild(tagDiv);
 
-        // 집계 수
         const stats = document.createElement("div");
         stats.classList.add("stats");
         stats.textContent = `Copy: 0 Favorite: 0`;
@@ -47,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         galleryItem.appendChild(details);
 
-        // 즐겨찾기 버튼 추가
         const favorite = document.createElement("div");
         favorite.classList.add("favorite");
         favorite.textContent = "★";
