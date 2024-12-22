@@ -33,13 +33,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
         galleryItem.appendChild(details);
 
+        // 복사 버튼 추가
+        const copyButton = document.createElement("button");
+        copyButton.classList.add("copy-btn");
+        copyButton.textContent = "Copy Tag";
+        copyButton.addEventListener("click", () => {
+            navigator.clipboard.writeText(tags.join(", "))
+                .then(() => {
+                    alert("Tag copied!");
+                    const currentCopy = parseInt(stats.textContent.match(/Copy: (\d+)/)[1]);
+                    stats.textContent = `Copy: ${currentCopy + 1} Favorite: ${stats.textContent.match(/Favorite: (\d+)/)[1]}`;
+                });
+        });
+        galleryItem.appendChild(copyButton);
+
+        // 즐겨찾기 아이콘 추가
         const favorite = document.createElement("div");
         favorite.classList.add("favorite");
         favorite.textContent = "★";
         favorite.addEventListener("click", () => {
             favorite.classList.toggle("active");
-            const isActive = favorite.classList.contains("active");
-            stats.textContent = `Copy: 0 Favorite: ${isActive ? 1 : 0}`;
+            const currentFavorite = favorite.classList.contains("active") ? 1 : 0;
+            stats.textContent = `Copy: ${stats.textContent.match(/Copy: (\d+)/)[1]} Favorite: ${currentFavorite}`;
         });
         galleryItem.appendChild(favorite);
 
