@@ -5,8 +5,18 @@
         "category": "art"
     },
     {
-        "image": "https://cdn.pixabay.com/photo/2017/02/13/01/26/the-question-mark-2061539_1280.png",
-        "tags": ["Digital", "Abstract"],
+        "image": "https://cdn.pixabay.com/photo/2016/11/18/21/15/sunset-1835437_1280.jpg",
+        "tags": ["Sunset", "Nature", "Sky"],
+        "category": "art"
+    },
+    {
+        "image": "https://cdn.pixabay.com/photo/2016/02/19/10/00/laptop-1209008_1280.jpg",
+        "tags": ["Technology", "Digital", "Work"],
+        "category": "digital"
+    },
+    {
+        "image": "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
+        "tags": ["Tree", "Nature", "Forest"],
         "category": "digital"
     }
 ]
