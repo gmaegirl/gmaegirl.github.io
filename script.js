@@ -21,26 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 카테고리 클릭 시 필터링
-    document.querySelectorAll(".category").forEach(categoryLink => {
-        categoryLink.addEventListener("click", (e) => {
-            e.preventDefault();
-            const category = e.target.dataset.category;
-            const galleryItems = document.querySelectorAll(".gallery-item");
-            galleryItems.forEach(item => {
-                const itemCategory = item.dataset.category;
-                item.style.display = category === "main" || itemCategory === category ? "block" : "none";
-            });
-        });
-    });
-
-    // 전체 보기 버튼 기능
-    document.getElementById("show-all").addEventListener("click", () => {
-        document.querySelectorAll(".gallery-item").forEach(item => {
-            item.style.display = "block";
-        });
-    });
-
     // 업로드 폼 처리
     document.getElementById("upload-form").addEventListener("submit", (e) => {
         e.preventDefault();
@@ -76,16 +56,25 @@ document.addEventListener("DOMContentLoaded", () => {
         img.src = imageUrl;
         galleryItem.appendChild(img);
 
-        const tagsDiv = document.createElement("div");
-        tagsDiv.classList.add("tags");
-        tags.forEach(tag => {
-            const tagSpan = document.createElement("span");
-            tagSpan.classList.add("tag");
-            tagSpan.textContent = tag;
-            tagsDiv.appendChild(tagSpan);
+        // 오버레이 추가
+        const overlay = document.createElement("div");
+        overlay.classList.add("overlay");
+
+        const stats = document.createElement("div");
+        stats.classList.add("stats");
+        stats.innerHTML = `<span>복사: 0</span><span>좋아요: 0</span>`;
+
+        const favorite = document.createElement("div");
+        favorite.classList.add("favorite");
+        favorite.textContent = "★";
+        favorite.addEventListener("click", () => {
+            favorite.classList.toggle("active");
         });
 
-        galleryItem.appendChild(tagsDiv);
+        overlay.appendChild(stats);
+        overlay.appendChild(favorite);
+        galleryItem.appendChild(overlay);
+
         gallery.appendChild(galleryItem);
         addTagFilter();
     }
