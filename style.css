@@ -17,31 +17,6 @@ header {
     z-index: 1000;
 }
 
-header nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 10px 0 0;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-header nav ul li {
-    display: inline;
-}
-
-header nav ul li a {
-    color: white;
-    text-decoration: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    background-color: #007bff;
-}
-
-header nav ul li a:hover {
-    background-color: #0056b3;
-}
-
 /* 컨트롤 버튼과 검색창 */
 .controls {
     text-align: center;
@@ -71,7 +46,7 @@ button:hover {
     display: inline-block;
 }
 
-/* 업로드 폼 스타일 */
+/* 업로드 폼 */
 #upload-form {
     text-align: center;
     margin: 20px;
@@ -85,29 +60,16 @@ button:hover {
     border-radius: 5px;
 }
 
-#upload-form button {
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-}
-
-#upload-form button:hover {
-    background-color: #0056b3;
-}
-
-/* 갤러리 스타일 */
+/* 갤러리 */
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 반응형 배치 */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 반응형 */
     gap: 20px;
     padding: 20px;
-    justify-content: center;
 }
 
 .gallery-item {
     position: relative;
-    width: calc(25% - 20px); /* 한 줄에 4개 */
-    margin: 10px;
     background: white;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -120,52 +82,49 @@ button:hover {
     display: block;
 }
 
-/* 오버레이 디자인 */
+/* 오버레이 */
 .overlay {
     position: absolute;
     bottom: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.8); /* 불투명도 높임 */
+    background: rgba(0, 0, 0, 0.7);
     color: white;
     font-size: 14px;
     padding: 10px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    gap: 10px; /* 요소 간격 */
-    flex-wrap: wrap; /* 작은 화면에서 겹치지 않게 */
 }
 
-/* 프롬프트 텍스트 스타일 */
+/* 프롬프트 */
 .prompt {
     margin-top: 5px;
     font-size: 14px;
-    color: white; /* 흰색으로 변경 */
+    color: white;
     text-align: center;
-    background: rgba(0, 0, 0, 0.7); /* 배경 추가 */
+    background: rgba(0, 0, 0, 0.8);
     padding: 5px;
-    border-radius: 5px; /* 약간의 둥근 모서리 */
+    border-radius: 5px;
 }
 
 /* 별 모양 아이콘 */
 .favorite {
     position: absolute;
-    top: 10px; /* 상단에서 충분히 떨어뜨림 */
-    right: 10px; /* 우측에서 충분히 떨어뜨림 */
+    top: 10px;
+    right: 10px;
     font-size: 20px;
     cursor: pointer;
     color: white;
-    background: rgba(0, 0, 0, 0.7); /* 배경 추가 */
-    border-radius: 50%; /* 원형으로 표시 */
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
     padding: 5px;
-    z-index: 10; /* 이미지 위로 나오도록 */
+    z-index: 10;
 }
 
 .favorite.active {
-    color: gold; /* 활성화된 경우 황금색 */
+    color: gold;
 }
 
-/* 반응형 디자인 */
+/* 반응형 */
 @media (max-width: 768px) {
     .gallery-item {
         width: calc(50% - 20px); /* 한 줄에 2개 */
@@ -174,6 +133,6 @@ button:hover {
 
 @media (max-width: 480px) {
     .gallery-item {
-        width: 100%; /* 작은 화면에서는 한 줄에 1개 */
+        width: 100%; /* 한 줄에 1개 */
     }
 }
