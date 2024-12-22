@@ -105,13 +105,14 @@ button:hover {
 }
 
 .gallery-item {
+    position: relative;
     width: calc(25% - 20px); /* 한 줄에 4개 */
+    margin: 10px;
     background: white;
     border: 1px solid #ccc;
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: relative;
 }
 
 .gallery-item img {
@@ -119,49 +120,60 @@ button:hover {
     display: block;
 }
 
+/* 오버레이 디자인 */
 .overlay {
     position: absolute;
     bottom: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.8); /* 불투명도 높임 */
     color: white;
     font-size: 14px;
-    padding: 5px 10px;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px; /* 요소 간격 */
+    flex-wrap: wrap; /* 작은 화면에서 겹치지 않게 */
 }
 
-.overlay .stats {
-    display: flex;
-    gap: 15px;
-}
-
-.overlay .stats span {
-    display: inline-block;
-}
-
-/* 별 모양 */
-.favorite {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    font-size: 20px;
-    cursor: pointer;
-    color: white;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 50%;
-    padding: 5px;
-}
-
-.favorite.active {
-    color: gold;
-}
-
-/* 프롬프트 스타일 */
+/* 프롬프트 텍스트 스타일 */
 .prompt {
     margin-top: 5px;
     font-size: 14px;
-    color: #555;
+    color: white; /* 흰색으로 변경 */
     text-align: center;
+    background: rgba(0, 0, 0, 0.7); /* 배경 추가 */
+    padding: 5px;
+    border-radius: 5px; /* 약간의 둥근 모서리 */
+}
+
+/* 별 모양 아이콘 */
+.favorite {
+    position: absolute;
+    top: 10px; /* 상단에서 충분히 떨어뜨림 */
+    right: 10px; /* 우측에서 충분히 떨어뜨림 */
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+    background: rgba(0, 0, 0, 0.7); /* 배경 추가 */
+    border-radius: 50%; /* 원형으로 표시 */
+    padding: 5px;
+    z-index: 10; /* 이미지 위로 나오도록 */
+}
+
+.favorite.active {
+    color: gold; /* 활성화된 경우 황금색 */
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .gallery-item {
+        width: calc(50% - 20px); /* 한 줄에 2개 */
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-item {
+        width: 100%; /* 작은 화면에서는 한 줄에 1개 */
+    }
 }
