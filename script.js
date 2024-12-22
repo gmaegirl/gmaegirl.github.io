@@ -51,33 +51,34 @@ document.addEventListener("DOMContentLoaded", () => {
         const galleryItem = document.createElement("div");
         galleryItem.classList.add("gallery-item");
         galleryItem.dataset.category = category;
-
+    
         const img = document.createElement("img");
         img.src = imageUrl;
         galleryItem.appendChild(img);
-
-        // 오버레이 추가
-        const overlay = document.createElement("div");
-        overlay.classList.add("overlay");
-
-        const stats = document.createElement("div");
-        stats.classList.add("stats");
-        stats.innerHTML = `<span>복사: 0</span><span>좋아요: 0</span>`;
-
-        const favorite = document.createElement("div");
-        favorite.classList.add("favorite");
-        favorite.textContent = "★";
-        favorite.addEventListener("click", () => {
-            favorite.classList.toggle("active");
+    
+        // 태그 목록 추가 (프롬프트로 표시)
+        const tagsDiv = document.createElement("div");
+        tagsDiv.classList.add("tags");
+        tags.forEach(tag => {
+            const tagSpan = document.createElement("span");
+            tagSpan.classList.add("tag");
+            tagSpan.textContent = tag;
+            tagsDiv.appendChild(tagSpan);
         });
-
-        overlay.appendChild(stats);
-        overlay.appendChild(favorite);
-        galleryItem.appendChild(overlay);
-
+    
+        galleryItem.appendChild(tagsDiv);
+    
+        // 프롬프트 텍스트 추가
+        const promptDiv = document.createElement("div");
+        promptDiv.classList.add("prompt");
+        promptDiv.textContent = `프롬프트: ${tags.join(", ")}`;
+        galleryItem.appendChild(promptDiv);
+    
         gallery.appendChild(galleryItem);
         addTagFilter();
     }
+
+
 
     // 태그 클릭 시 프롬프트 복사 기능
     function addTagFilter() {
