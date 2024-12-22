@@ -1,18 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
     const gallery = document.querySelector(".gallery");
+    const categoryButtons = document.querySelectorAll(".category-btn");
 
     // JSON 데이터 로드
     fetch("data.json")
         .then(response => response.json())
         .then(data => {
-            data.forEach(item => addGalleryItem(item.image, item.tags));
+            data.forEach(item => addGalleryItem(item.image, item.tags, item.category));
         })
         .catch(error => console.error("JSON 로드 오류:", error));
 
     // 갤러리 아이템 추가
-    function addGalleryItem(imageUrl, tags) {
+    function addGalleryItem(imageUrl, tags, category = "custom") {
         const galleryItem = document.createElement("div");
         galleryItem.classList.add("gallery-item");
+        galleryItem.dataset.category = category; // 카테고리 데이터 추가
 
         // 이미지 클릭 시 태그 복사 및 집계 업데이트
         const img = document.createElement("img");
@@ -52,22 +54,38 @@ document.addEventListener("DOMContentLoaded", () => {
         favorite.addEventListener("click", () => {
             favorite.classList.toggle("active");
             const currentFavorite = favorite.classList.contains("active") ? 1 : 0;
-            const currentCopy = parseInt(stats.textContent.match(/Copy: (\d+)/)[1]);
-            stats.textContent = `Copy: ${currentCopy} Favorite: ${currentFavorite}`;
+            stats.textContent = `Copy: 0 Favorite: ${currentFavorite}`;
         });
         galleryItem.appendChild(favorite);
 
         gallery.appendChild(galleryItem);
     }
 
+    // 카테고리 필터
+    categoryButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const category = button.dataset.category;
+            const galleryItems = document.querySelectorAll(".gallery-item");
+
+            galleryItems.forEach(item => {
+                if (category === "all" || item.dataset.category === category) {
+                    item.style.display = "block";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        });
+    });
+
     // 이미지 업로드 처리
     document.getElementById("upload-form").addEventListener("submit", (e) => {
         e.preventDefault();
         const tagsInput = document.getElementById("upload-tags").value;
         const imageInput = document.getElementById("upload-image").files;
+        const categoryInput = document.getElementById("upload-category").value;
 
         if (!tagsInput || imageInput.length === 0) {
-            alert("이미지와 태그를 모두 입력해주세요!");
+            alert("Please enter tags and upload an image!");
             return;
         }
 
@@ -76,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const reader = new FileReader();
             reader.onload = function(event) {
                 const imageUrl = event.target.result;
-                addGalleryItem(imageUrl, tags, "user-upload");
+                addGalleryItem(imageUrl, tags, categoryInput);
             };
             reader.readAsDataURL(file);
         });
