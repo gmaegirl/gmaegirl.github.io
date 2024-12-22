@@ -3,13 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tag Gallery</title>
+    <title>Tag Gallery with Categories</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <h1 id="site-title">Tag Gallery</h1>
     </header>
+
+    <!-- 카테고리 선택 -->
+    <div class="categories">
+        <button class="category-btn" data-category="all">All</button>
+        <button class="category-btn" data-category="nature">Nature</button>
+        <button class="category-btn" data-category="technology">Technology</button>
+        <button class="category-btn" data-category="art">Art</button>
+        <button class="category-btn" data-category="custom">Custom</button>
+    </div>
+
     <div class="controls">
         <button id="show-all">Show All</button>
         <input type="text" id="search" placeholder="Search Tags">
@@ -17,6 +27,12 @@
     <form id="upload-form">
         <input type="text" id="upload-tags" placeholder="Enter Tags (comma-separated)">
         <input type="file" id="upload-image" accept="image/*" multiple>
+        <select id="upload-category">
+            <option value="nature">Nature</option>
+            <option value="technology">Technology</option>
+            <option value="art">Art</option>
+            <option value="custom">Custom</option>
+        </select>
         <button type="submit">Add Images</button>
     </form>
     <div class="gallery"></div>
