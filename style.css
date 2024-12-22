@@ -97,8 +97,8 @@ button:hover {
 
 /* 갤러리 스타일 */
 .gallery {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 반응형 배치 */
     gap: 20px;
     padding: 20px;
     justify-content: center;
