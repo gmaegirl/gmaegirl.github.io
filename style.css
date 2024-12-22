@@ -82,57 +82,61 @@ button:hover {
     display: block;
 }
 
-/* 오버레이 */
+/* 오버레이 디자인 수정 */
 .overlay {
     position: absolute;
     bottom: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.8);
     color: white;
     font-size: 14px;
     padding: 10px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column; /* 수직 정렬 */
+    align-items: flex-start; /* 왼쪽 정렬 */
+    gap: 5px; /* 요소 간 간격 */
 }
 
-/* 프롬프트 */
+/* 프롬프트 텍스트 수정 */
 .prompt {
-    margin-top: 5px;
-    font-size: 14px;
+    font-size: 12px;
     color: white;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.8);
     padding: 5px;
     border-radius: 5px;
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%; /* 오버레이 내부 전체 사용 */
+    text-align: left; /* 왼쪽 정렬 */
+    box-sizing: border-box;
 }
 
-/* 별 모양 아이콘 */
+/* 즐겨찾기 아이콘 수정 */
 .favorite {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
+    top: 5px; /* 상단 여백 */
+    right: 5px; /* 우측 여백 */
+    font-size: 18px; /* 크기 조정 */
     cursor: pointer;
     color: white;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.6);
     border-radius: 50%;
     padding: 5px;
-    z-index: 10;
+    z-index: 10; /* 다른 요소 위로 */
 }
 
 .favorite.active {
-    color: gold;
+    color: gold; /* 즐겨찾기 활성화 시 */
 }
 
-/* 반응형 */
+/* 반응형 갤러리 수정 */
 @media (max-width: 768px) {
     .gallery-item {
-        width: calc(50% - 20px); /* 한 줄에 2개 */
+        width: calc(50% - 10px); /* 태블릿: 한 줄에 2개 */
     }
 }
 
 @media (max-width: 480px) {
     .gallery-item {
-        width: 100%; /* 한 줄에 1개 */
+        width: calc(100% - 20px); /* 모바일: 한 줄에 1개 */
+        margin: 10px auto; /* 중앙 정렬 */
     }
 }
