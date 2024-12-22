@@ -5,44 +5,41 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("data.json")
         .then(response => response.json())
         .then(data => {
-            data.forEach(item => addGalleryItem(item.image, item.tags, item.category));
+            data.forEach(item => addGalleryItem(item.image, item.tags));
         })
         .catch(error => console.error("JSON 로드 오류:", error));
 
-    // 갤러리 아이템 추가 함수
-    function addGalleryItem(imageUrl, tags, category = "main") {
+    // 갤러리 아이템 추가
+    function addGalleryItem(imageUrl, tags) {
         const galleryItem = document.createElement("div");
         galleryItem.classList.add("gallery-item");
 
-        // 이미지 추가
         const img = document.createElement("img");
         img.src = imageUrl;
         galleryItem.appendChild(img);
 
-        // 오버레이 추가
-        const overlay = document.createElement("div");
-        overlay.classList.add("overlay");
+        const details = document.createElement("div");
+        details.classList.add("details");
 
-        // 프롬프트 추가
-        const promptDiv = document.createElement("div");
-        promptDiv.classList.add("prompt");
-        promptDiv.textContent = `프롬프트: ${tags.join(", ")}`;
-        overlay.appendChild(promptDiv);
+        const tagDiv = document.createElement("div");
+        tagDiv.classList.add("tags");
+        tagDiv.textContent = `Tag: ${tags.join(", ")}`;
+        details.appendChild(tagDiv);
 
-        // 복사/좋아요 정보 추가
         const stats = document.createElement("div");
         stats.classList.add("stats");
-        stats.innerHTML = `<span>복사: 0</span><span>좋아요: 0</span>`;
-        overlay.appendChild(stats);
+        stats.textContent = `Copy: 0 Favorite: 0`;
+        details.appendChild(stats);
 
-        galleryItem.appendChild(overlay);
+        galleryItem.appendChild(details);
 
-        // 즐겨찾기 아이콘 추가
         const favorite = document.createElement("div");
         favorite.classList.add("favorite");
         favorite.textContent = "★";
         favorite.addEventListener("click", () => {
             favorite.classList.toggle("active");
+            const isActive = favorite.classList.contains("active");
+            stats.textContent = `Copy: 0 Favorite: ${isActive ? 1 : 0}`;
         });
         galleryItem.appendChild(favorite);
 
@@ -80,8 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const galleryItems = document.querySelectorAll(".gallery-item");
 
         galleryItems.forEach(item => {
-            const itemTags = Array.from(item.querySelectorAll(".prompt")).map(p => p.textContent.toLowerCase());
-            item.style.display = itemTags.some(tag => tag.includes(query)) ? "block" : "none";
+            const tagText = item.querySelector(".tags").textContent.toLowerCase();
+            item.style.display = tagText.includes(query) ? "block" : "none";
         });
     });
 });
