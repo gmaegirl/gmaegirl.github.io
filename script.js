@@ -32,20 +32,22 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("upload-form").addEventListener("submit", (e) => {
         e.preventDefault();
         const tagsInput = document.getElementById("upload-tags").value;
-        const imageInput = document.getElementById("upload-image").files[0];
+        const imageInput = document.getElementById("upload-image").files;
 
-        if (!tagsInput || !imageInput) {
+        if (!tagsInput || imageInput.length === 0) {
             alert("이미지와 태그를 모두 입력해주세요!");
             return;
         }
 
         const tags = tagsInput.split(",").map(tag => tag.trim());
-        const reader = new FileReader();
-        reader.onload = function(event) {
-            const imageUrl = event.target.result;
-            addGalleryItem(imageUrl, tags);
-        };
-        reader.readAsDataURL(imageInput);
+        Array.from(imageInput).forEach(file => {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const imageUrl = event.target.result;
+                addGalleryItem(imageUrl, tags);
+            };
+            reader.readAsDataURL(file);
+        });
 
         document.getElementById("upload-tags").value = "";
         document.getElementById("upload-image").value = "";
@@ -74,17 +76,20 @@ document.addEventListener("DOMContentLoaded", () => {
         addTagFilter();
     }
 
-    // 태그 필터링 기능
+    // 태그 클릭 시 프롬프트 복사 기능
     function addTagFilter() {
         const tags = document.querySelectorAll(".tag");
         tags.forEach(tag => {
             tag.addEventListener("click", () => {
-                const tagName = tag.textContent;
-                document.querySelectorAll(".gallery-item").forEach(item => {
-                    const itemTags = Array.from(item.querySelectorAll(".tag")).map(t => t.textContent);
-                    item.style.display = itemTags.includes(tagName) ? "block" : "none";
-                });
+                navigator.clipboard.writeText(tag.textContent)
+                    .then(() => alert(`"${tag.textContent}" 프롬프트가 복사되었습니다!`))
+                    .catch(() => alert("프롬프트 복사에 실패했습니다."));
             });
         });
     }
+
+    // 상단 사이트명 클릭 시 메인홈 이동
+    document.getElementById("site-title").addEventListener("click", () => {
+        window.location.href = "index.html";
+    });
 });
