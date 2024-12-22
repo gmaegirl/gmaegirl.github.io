@@ -63,9 +63,11 @@ button:hover {
 /* 갤러리 */
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 반응형 */
+    grid-template-columns: repeat(4, 1fr); /* PC: 한 줄에 4개 */
     gap: 20px;
     padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px; /* 좌우 여백 */
 }
 
 .gallery-item {
@@ -79,10 +81,11 @@ button:hover {
 
 .gallery-item img {
     width: 100%;
+    height: auto;
     display: block;
 }
 
-/* 오버레이 디자인 수정 */
+/* 오버레이 */
 .overlay {
     position: absolute;
     bottom: 0;
@@ -92,51 +95,52 @@ button:hover {
     font-size: 14px;
     padding: 10px;
     display: flex;
-    flex-direction: column; /* 수직 정렬 */
-    align-items: flex-start; /* 왼쪽 정렬 */
-    gap: 5px; /* 요소 간 간격 */
+    flex-direction: column;
+    gap: 5px;
 }
 
-/* 프롬프트 텍스트 수정 */
+/* 프롬프트 */
 .prompt {
     font-size: 12px;
     color: white;
     padding: 5px;
+    background: rgba(0, 0, 0, 0.7);
     border-radius: 5px;
-    background: rgba(0, 0, 0, 0.6);
-    width: 100%; /* 오버레이 내부 전체 사용 */
-    text-align: left; /* 왼쪽 정렬 */
-    box-sizing: border-box;
 }
 
-/* 즐겨찾기 아이콘 수정 */
+/* 즐겨찾기 아이콘 */
 .favorite {
     position: absolute;
-    top: 5px; /* 상단 여백 */
-    right: 5px; /* 우측 여백 */
-    font-size: 18px; /* 크기 조정 */
+    top: 5px;
+    right: 5px;
+    font-size: 18px;
     cursor: pointer;
     color: white;
     background: rgba(0, 0, 0, 0.6);
     border-radius: 50%;
     padding: 5px;
-    z-index: 10; /* 다른 요소 위로 */
+    z-index: 10;
 }
 
 .favorite.active {
-    color: gold; /* 즐겨찾기 활성화 시 */
+    color: gold;
 }
 
-/* 반응형 갤러리 수정 */
+/* 반응형 */
+@media (max-width: 1024px) {
+    .gallery {
+        grid-template-columns: repeat(3, 1fr); /* 태블릿: 한 줄에 3개 */
+    }
+}
+
 @media (max-width: 768px) {
-    .gallery-item {
-        width: calc(50% - 10px); /* 태블릿: 한 줄에 2개 */
+    .gallery {
+        grid-template-columns: repeat(2, 1fr); /* 작은 태블릿: 한 줄에 2개 */
     }
 }
 
 @media (max-width: 480px) {
-    .gallery-item {
-        width: calc(100% - 20px); /* 모바일: 한 줄에 1개 */
-        margin: 10px auto; /* 중앙 정렬 */
+    .gallery {
+        grid-template-columns: repeat(1, 1fr); /* 모바일: 한 줄에 1개 */
     }
 }
