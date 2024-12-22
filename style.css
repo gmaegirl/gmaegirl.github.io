@@ -119,30 +119,20 @@ button:hover {
     position: absolute;
     top: 10px;
     right: 10px;
-    background: white;
+    background: transparent;
     color: #007bff;
-    border: 2px solid #007bff;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    font-size: 25px;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease;
 }
 
-.favorite:hover {
-    transform: scale(1.2);
-    background: #007bff;
-    color: white;
-}
-
+.favorite:hover,
 .favorite.active {
-    background: gold;
-    color: white;
+    color: gold;
+    transform: scale(1.2);
 }
 
 /* 반응형 */
