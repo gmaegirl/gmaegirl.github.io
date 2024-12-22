@@ -1,6 +1,6 @@
 /* 기본 스타일 */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
@@ -92,54 +92,33 @@ button:hover {
     height: auto;
     border-radius: 10px;
     margin-bottom: 10px;
-}
-
-/* 태그와 버튼 */
-.details {
-    font-size: 14px;
-    color: black;
-    background: rgba(240, 240, 240, 1); /* 배경 통일 */
-    padding: 10px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.details .tags {
-    text-align: left;
-    font-weight: bold;
-    flex: 1;
-}
-
-.details .stats {
-    text-align: right;
-    font-weight: normal;
-    flex: 1;
-}
-
-/* 복사 버튼 */
-.copy-btn {
-    margin-top: 5px;
-    padding: 5px 10px;
-    font-size: 12px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
     cursor: pointer;
 }
 
-.copy-btn:hover {
-    background-color: #0056b3;
+/* 태그와 집계수 */
+.details {
+    font-size: 14px;
+    color: black;
+    background: rgba(240, 240, 240, 1);
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.details .tags {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 /* 즐겨찾기 버튼 */
 .favorite {
     position: absolute;
-    top: -10px;
-    right: -10px;
+    top: 10px;
+    right: 10px;
     background: white;
     color: #007bff;
     border: 2px solid #007bff;
