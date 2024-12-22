@@ -105,44 +105,47 @@ button:hover {
 }
 
 .gallery-item {
-    width: calc(33.33% - 20px);
+    width: calc(25% - 20px); /* 한 줄에 4개 */
     background: white;
     border: 1px solid #ccc;
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
 .gallery-item img {
     width: 100%;
+    display: block;
 }
 
-.tags {
-    padding: 5px;
-    background: #f1f1f1;
-    text-align: center;
-}
-
-.tag {
-    display: inline-block;
-    padding: 3px 7px;
-    margin: 2px;
-    background: #007bff;
+.overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
     color: white;
-    border-radius: 3px;
-    font-size: 12px;
+    font-size: 14px;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.overlay .stats {
+    display: flex;
+    gap: 15px;
+}
+
+.overlay .stats span {
+    display: inline-block;
+}
+
+/* 별 모양 */
+.favorite {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 20px;
     cursor: pointer;
-}
-
-/* 반응형 디자인 */
-@media (max-width: 768px) {
-    .gallery-item {
-        width: calc(50% - 20px);
-    }
-}
-
-@media (max-width: 480px) {
-    .gallery-item {
-        width: 100%;
-    }
-}
+    color:
